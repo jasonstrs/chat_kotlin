@@ -16,34 +16,28 @@ class LoginActivity : AppCompatActivity() {
     var edtPasse: EditText? = null
     var btnLogin: Button? = null
     var cbRemember: CheckBox? = null
-
-    val CAT = "IG2I"
+    var gs: GlobalState? = null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        edtLogin = findViewById(R.id.edtLogin);
-        edtPasse = findViewById(R.id.edtPasse);
-        btnLogin = findViewById(R.id.btnLogin);
-        cbRemember = findViewById(R.id.cbRemember);
-    }
-
-    fun alerter(s: String) {
-        Log.i(CAT, s)
-        val t = Toast.makeText(this, s, Toast.LENGTH_SHORT)
-        t.show()
+        edtLogin = findViewById(R.id.edtLogin)
+        edtPasse = findViewById(R.id.edtPasse)
+        btnLogin = findViewById(R.id.btnLogin)
+        cbRemember = findViewById(R.id.cbRemember)
+        gs = getApplication() as GlobalState
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu);
+        menuInflater.inflate(R.menu.menu, menu)
         return true;
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var id = item.itemId
         when (id) {
-            R.id.action_settings -> alerter("Préférences")
-            R.id.action_account -> alerter("Compte")
+            R.id.action_settings -> gs.alerter("Préférences")
+            R.id.action_account -> gs.alerter("Compte")
         }
         return super.onOptionsItemSelected(item)
     }
