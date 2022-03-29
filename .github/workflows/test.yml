@@ -21,7 +21,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: List 1 🔍
+      run: |
+        ls -la 
     - name: Build with Gradle 🔨
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
         arguments: build
+    - name: List 2 🔍
+      run: |
+        ls -la 
