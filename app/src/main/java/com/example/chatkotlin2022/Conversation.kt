@@ -1,9 +1,9 @@
 package com.example.chatkotlin2022
 
 class Conversation {
-    var id: String? = null
-    var active: String? = null
-    var theme: String? = null
+    private var id: String? = null
+    private var active: String? = null
+    private var theme: String? = null
 
     @Override
     override fun toString(): String {
@@ -16,9 +16,5 @@ class Conversation {
 
     fun getActive(): Boolean {
         return active.equals("1")
-    }
-
-    fun getTheme(): String {
-        return theme
     }
 }
