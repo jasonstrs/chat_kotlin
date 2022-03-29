@@ -23,22 +23,26 @@ jobs:
     - name: List 1 🔍
       run: |
         ls -la 
-    - name: Build with Gradle 🔨
-      uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+    - name: Cache Gradle packages
+      uses: actions/cache@v1
       with:
-        arguments: build
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+    - name: Build with Gradle
+      run: ./gradlew build
     - name: List 2 🔍
       run: |
         ls -la 
-        ls target
+        ls build
     - name: Upload on Github Action 📂
       uses: actions/upload-artifact@v2
       with:
         name: Build
-        path: target
+        path: build
     - name: Zip build 📕📗📘
       run: |
-        pushd target
+        pushd build
         zip -r ../build.zip .
         popd
     - name: Release 💸
