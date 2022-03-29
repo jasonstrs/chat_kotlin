@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">ChatKotlin2022</string>
+    <string name="app_name">Chat2022</string>
+    <string name="appname">Clavardons !</string>
+    <string name="login">Login :</string>
+    <string name="passe">Mot de passe :</string>
+    <string name="remember">Se souvenir de moi :</string>
+    <string name="choix_conversation">choix</string>
 </resources>
