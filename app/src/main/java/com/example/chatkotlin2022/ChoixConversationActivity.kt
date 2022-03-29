@@ -1,19 +1,31 @@
 package com.example.chatkotlin2022
 
+import android.content.Context
 import android.os.Bundle
+import android.support.annotation.Nullable
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ChoixConversationActivity : AppCompatActivity()  {
     var gs: GlobalState? = null
     var spinConversations: Spinner? = null
 
-    class MyCustomAdapter(context: Context?,
+    /*class MyCustomAdapter(context: Context?,
                           private val layoutId: Int,
-                          objects: ArrayList<Conversation>) : ArrayAdapter<Conversation?>(context, layoutId, objects) {
+                          objects: ArrayList<Conversation>) : ArrayAdapter<Conversation?>(context!!, layoutId, objects) {
         private val dataConvs: ArrayList<Conversation>
 
-        @Override
-        fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
             //return getCustomView(position, convertView, parent);
             // getLayoutInflater() vient de Android.Activity => il faut utiliser une classe interne
             val inflater: LayoutInflater = getLayoutInflater()
@@ -26,8 +38,7 @@ class ChoixConversationActivity : AppCompatActivity()  {
             return item
         }
 
-        @Override
-        fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             //return getCustomView(position, convertView, parent);
             val inflater: LayoutInflater = getLayoutInflater()
             val item: View = inflater.inflate(layoutId, parent, false)
@@ -42,21 +53,19 @@ class ChoixConversationActivity : AppCompatActivity()  {
         init {
             dataConvs = objects
         }
-    }
+    }*/
 
-    @Override
-    protected fun onCreate(@Nullable savedInstanceState: Bundle?) {
+    override protected fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choix_conversation)
-        gs = getApplication() as GlobalState?
+        /*gs = getApplication() as GlobalState?
         val bdl: Bundle = this.getIntent().getExtras()
         gs.alerter("hash : " + bdl.getString("hash"))
         val hash: String = bdl.getString("hash")
         val apiService: APIInterface = APIClient.getClient().create(APIInterface::class.java)
         val call1: Call<ListConversations> = apiService.doGetListConversation(hash)
         call1.enqueue(object : Callback<ListConversations?>() {
-            @Override
-            fun onResponse(call: Call<ListConversations?>?, response: Response<ListConversations?>) {
+            override fun onResponse(call: Call<ListConversations?>?, response: Response<ListConversations?>) {
                 val listeConvs: ListConversations = response.body()
                 Log.i(gs.CAT, listeConvs.toString())
                 spinConversations = findViewById(R.id.spinConversations) as Spinner?
@@ -71,10 +80,9 @@ class ChoixConversationActivity : AppCompatActivity()  {
                         listeConvs.getConversations()))
             }
 
-            @Override
-            fun onFailure(call: Call<ListConversations?>, t: Throwable?) {
+            override fun onFailure(call: Call<ListConversations?>, t: Throwable?) {
                 call.cancel()
             }
-        })
+        })*/
     }
 }

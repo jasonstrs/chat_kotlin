@@ -63,7 +63,7 @@ class GlobalState : Application() {
         return bStatut
     }
 
-    fun requeteGET(urlData: String, qs: String?): String? {
+    fun requeteGET(urlData: String?, qs: String?): String? {
         if (qs != null) {
             try {
                 val url = URL("$urlData?$qs")

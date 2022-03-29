@@ -6,6 +6,10 @@ class ListConversations {
     private var status: String? = null
     private var conversations: ArrayList<Conversation?>? = null
 
+    fun getConversations(): ArrayList<Conversation?>? {
+        return conversations
+    }
+
     @Override
     override fun toString(): String {
         return "ListConversations{" +

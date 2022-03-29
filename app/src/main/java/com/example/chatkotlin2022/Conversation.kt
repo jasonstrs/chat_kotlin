@@ -17,4 +17,9 @@ class Conversation {
     fun getActive(): Boolean {
         return active.equals("1")
     }
+
+    fun getTheme(): String? {
+        return theme
+    }
+
 }
