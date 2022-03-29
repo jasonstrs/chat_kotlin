@@ -36,8 +36,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var id = item.itemId
         when (id) {
-            R.id.action_settings -> gs.alerter("Préférences")
-            R.id.action_account -> gs.alerter("Compte")
+            R.id.action_settings -> gs?.alerter("Préférences")
+            R.id.action_account -> gs?.alerter("Compte")
         }
         return super.onOptionsItemSelected(item)
     }

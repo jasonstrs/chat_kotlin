@@ -1,5 +1,15 @@
 package com.example.chatkotlin2022
 
+import android.app.Application
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.util.Log
+import android.widget.Toast
+import java.io.*
+import java.net.HttpURLConnection
+import java.net.MalformedURLException
+import java.net.URL
+
 class GlobalState : Application() {
     val CAT = "IG2I"
 
@@ -24,7 +34,7 @@ class GlobalState : Application() {
             sb.toString()
         } finally {
             try {
-                `in`.close()
+                `in`?.close()
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -35,7 +45,7 @@ class GlobalState : Application() {
         // On vérifie si le réseau est disponible,
         // si oui on change le statut du bouton de connexion
         val cnMngr: ConnectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        val netInfo: NetworkInfo = cnMngr.getActiveNetworkInfo()
+        val netInfo: NetworkInfo? = cnMngr.getActiveNetworkInfo()
         var sType = "Aucun réseau détecté"
         var bStatut = false
         if (netInfo != null) {
