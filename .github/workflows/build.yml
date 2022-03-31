@@ -27,17 +27,13 @@ jobs:
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
         arguments: build
+    - name: Build app release bundle (AAB)
+      id: buildRelease
+      run: ./gradlew assembleRelease
     - name: List 2 🔍
       run: |
-        ./gradlew assembleDebug
         ls -la 
-        ls app
-        cd app
-        ls build 
-        cd build 
-        ls intermediates 
-        cd intermediates
-        ls apk
+        ls app/build/outputs/apk/release
     - name: Upload on Github Action 📂
       uses: actions/upload-artifact@v2
       with:
