@@ -1,39 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightgreen"
-    tools:context=".ChoixConversationActivity">
+    android:background="@android:color/holo_orange_dark"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ConversationActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center|center_horizontal"
-        android:text="@string/choix_conversation"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/conversation_edtMessage"
+        android:layout_width="257dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btnChoixConv"
+        android:id="@+id/conversation_btnOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="OK"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinConversations" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:enabled="true"
+        android:text="@android:string/ok" />
 
-    <Spinner
-        android:id="@+id/spinConversations"
+    <ListView
+        android:id="@+id/conversation_svMessages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/conversation_btnOK"
+        android:layout_below="@+id/conversation_titre"
+        android:layout_alignLeft="@+id/conversation_titre"
+        android:layout_alignParentRight="true"
+        android:background="@color/white" />
 
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-</android.support.constraint.ConstraintLayout>
+    <!--
+    <ScrollView
+    android:id="@+id/conversation_svMessages"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/conversation_btnOK"
+    android:layout_alignLeft="@+id/conversation_titre"
+    android:layout_alignParentRight="true"
+    android:layout_below="@+id/conversation_titre"
+    android:background="@color/blanc" >
+
+    <LinearLayout
+    android:id="@+id/conversation_svLayoutMessages"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    </LinearLayout>
+    </ScrollView>-->
+
+    <TextView
+        android:id="@+id/conversation_titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/conversation_btnOK"
+        android:layout_alignParentTop="true"
+        android:gravity="center|center_horizontal"
+        android:text="@string/conversation"
+        android:textAlignment="gravity"
+        android:textColor="@color/white"
+        android:textSize="20pt" />
+
+</RelativeLayout>

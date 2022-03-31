@@ -22,4 +22,8 @@ class Conversation {
         return theme
     }
 
+    fun getId(): String? {
+        return id
+    }
+
 }

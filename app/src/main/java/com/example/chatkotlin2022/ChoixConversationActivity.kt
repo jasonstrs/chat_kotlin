@@ -1,6 +1,7 @@
 package com.example.chatkotlin2022
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.Nullable
 import android.support.v7.app.AppCompatActivity
@@ -8,17 +9,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import com.google.gson.GsonBuilder
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ChoixConversationActivity : AppCompatActivity()  {
+class ChoixConversationActivity : AppCompatActivity(), View.OnClickListener {
     var gs: GlobalState? = null
     var spinConversations: Spinner? = null
+    var btnChoixConv: Button? = null
 
     class MyCustomAdapter(
         context: Context?,
@@ -70,6 +71,10 @@ class ChoixConversationActivity : AppCompatActivity()  {
         val apiClient = APIClient()
         val apiService: APIInterface = apiClient.getClient()!!.create(APIInterface::class.java)
         val call1: Call<ListConversations> = apiService.doGetListConversation(hash)
+        btnChoixConv = findViewById(R.id.btnChoixConv)
+        btnChoixConv?.setOnClickListener(this)
+
+
         call1.enqueue(object : Callback<ListConversations?> {
             override fun onResponse(call: Call<ListConversations?>?, response: Response<ListConversations?>) {
                 val listeConvs: ListConversations? = response.body()
@@ -78,11 +83,32 @@ class ChoixConversationActivity : AppCompatActivity()  {
                 spinConversations?.setAdapter(MyCustomAdapter(this@ChoixConversationActivity,
                         R.layout.spinner_item,
                         listeConvs?.getConversations()))
+                btnChoixConv?.isEnabled = true
             }
 
             override fun onFailure(call: Call<ListConversations?>, t: Throwable?) {
                 call.cancel()
             }
         })
+    }
+
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.btnChoixConv -> {
+                // gs?.alerter("Choix Conv")
+                // gs?.alerter(spinConversations?.selectedItem.toString())
+                val selectedValue = spinConversations?.selectedItem as Conversation
+                // gs?.alerter(selectedValue.getId().toString())
+                if (selectedValue == null) {
+                    gs?.alerter("La selection est incorrecte")
+                    return
+                }
+                val versConv = Intent(this@ChoixConversationActivity, ConversationActivity::class.java)
+                val bdl: Bundle? = intent.extras
+                bdl?.putString("id", selectedValue.getId())
+                versConv.putExtras(bdl!!)
+                this@ChoixConversationActivity.startActivity(versConv)
+            }
+        }
     }
 }

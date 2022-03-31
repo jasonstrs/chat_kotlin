@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".ChoixConversationActivity"></activity>
+        <activity android:name=".ConversationActivity"></activity>
     </application>
 
 </manifest>
