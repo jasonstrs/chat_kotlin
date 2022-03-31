@@ -35,7 +35,7 @@ jobs:
     - name: Zip build 📕📗📘
       run: |
         pushd app/build/outputs/apk/release
-        zip -r ../build.zip .
+        zip -r ../../../../../build.zip .
         popd
     - name: Release 💸
       uses: softprops/action-gh-release@v1
