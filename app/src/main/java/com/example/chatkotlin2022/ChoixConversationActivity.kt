@@ -108,6 +108,7 @@ class ChoixConversationActivity : AppCompatActivity(), View.OnClickListener {
                 bdl?.putString("id", selectedValue.getId())
                 gs?.alerter(selectedValue.getId().toString())
                 bdl?.putBoolean("actif", selectedValue.getActive())
+                bdl?.putString("theme", selectedValue.getTheme())
                 versConv.putExtras(bdl!!)
                 this@ChoixConversationActivity.startActivity(versConv)
             }

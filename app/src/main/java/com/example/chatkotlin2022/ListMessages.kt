@@ -4,10 +4,14 @@ class ListMessages {
     private var version: String? = null
     private var success: String? = null
     private var status: String? = null
-    private var messages: ArrayList<Message?>? = null
+    private var messages: ArrayList<Message> = arrayListOf()
 
-    fun getMessages(): ArrayList<Message?>? {
+    fun getMessages(): ArrayList<Message> {
         return messages
+    }
+
+    fun getColorWith(position: Int) : String? {
+        return messages.get(position).couleur
     }
 
     override fun toString(): String {

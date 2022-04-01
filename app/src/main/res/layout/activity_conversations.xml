@@ -39,28 +39,11 @@
         android:layout_below="@+id/conversation_titre"
         android:layout_alignLeft="@+id/conversation_titre"
         android:layout_alignParentRight="true"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/white" />
-
-
-    <!--
-    <ScrollView
-    android:id="@+id/conversation_svMessages"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@+id/conversation_btnOK"
-    android:layout_alignLeft="@+id/conversation_titre"
-    android:layout_alignParentRight="true"
-    android:layout_below="@+id/conversation_titre"
-    android:background="@color/blanc" >
-
-    <LinearLayout
-    android:id="@+id/conversation_svLayoutMessages"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    </LinearLayout>
-    </ScrollView>-->
 
     <TextView
         android:id="@+id/conversation_titre"
@@ -72,6 +55,6 @@
         android:text="@string/conversation"
         android:textAlignment="gravity"
         android:textColor="@color/white"
-        android:textSize="20pt" />
+        android:textSize="34sp" />
 
 </RelativeLayout>
