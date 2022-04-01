@@ -106,6 +106,8 @@ class ChoixConversationActivity : AppCompatActivity(), View.OnClickListener {
                 val versConv = Intent(this@ChoixConversationActivity, ConversationActivity::class.java)
                 val bdl: Bundle? = intent.extras
                 bdl?.putString("id", selectedValue.getId())
+                gs?.alerter(selectedValue.getId().toString())
+                bdl?.putBoolean("actif", selectedValue.getActive())
                 versConv.putExtras(bdl!!)
                 this@ChoixConversationActivity.startActivity(versConv)
             }

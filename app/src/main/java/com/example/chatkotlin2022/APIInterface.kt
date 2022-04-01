@@ -1,9 +1,7 @@
 package com.example.chatkotlin2022
 
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface APIInterface {
     @GET("conversations")
@@ -11,4 +9,7 @@ interface APIInterface {
 
     @GET("conversations/{id}/messages")
     fun doGetListMessage(@Header("hash") hash: String?, @Path("id") id: String?): Call<ListMessages>
+
+    @POST("conversations/{id}/messages?")
+    fun postMessage(@Header("hash") hash: String?, @Path("id") id: String?, @Query("contenu") message: String?): Call<ListMessages>
 }
