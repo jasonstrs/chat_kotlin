@@ -6,4 +6,6 @@
     <string name="remember">Se souvenir de moi :</string>
     <string name="choix_conversation">choix</string>
     <string name="conversation">Conversation</string>
+    <string name="auteur">Auteur</string>
+    <string name="message">Message</string>
 </resources>

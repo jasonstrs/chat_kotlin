@@ -7,8 +7,13 @@ class Message {
     var auteur: String? = null
     var couleur: String? = null
 
+    constructor(contenu: String?, auteur: String?) {
+        this.contenu = contenu
+        this.auteur = auteur
+    }
+
 
     override fun toString(): String {
-        return "$auteur : $contenu : $id : $couleur"
+        return "$auteur : \n$contenu"
     }
 }

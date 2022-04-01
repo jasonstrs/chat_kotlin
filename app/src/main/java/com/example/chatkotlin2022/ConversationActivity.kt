@@ -2,11 +2,12 @@ package com.example.chatkotlin2022
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.Spinner
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class ConversationActivity : AppCompatActivity() {
     var gs: GlobalState? = null
@@ -28,13 +29,18 @@ class ConversationActivity : AppCompatActivity() {
         call1.enqueue(object : Callback<ListMessages?> {
             override fun onResponse(call: Call<ListMessages?>?, response: Response<ListMessages?>) {
                 val listeMsg: ListMessages? = response.body()
-                Log.i(gs?.CAT, listeMsg?.getMessages().toString())
-
+                val listView : ListView = findViewById(R.id.conversation_svMessages)
+                val arrayAdapter : ArrayAdapter<Message> = ArrayAdapter<Message>(
+                    this@ConversationActivity,
+                    android.R.layout.simple_list_item_activated_1,
+                    listeMsg?.getMessages()?.toTypedArray() as Array<Message>
+                )
+                listView.adapter = arrayAdapter
             }
 
             override fun onFailure(call: Call<ListMessages?>, t: Throwable) {
-                TODO("Not yet implemented")
                 gs?.alerter("FAILURE")
+                call.cancel()
             }
         })
     }
