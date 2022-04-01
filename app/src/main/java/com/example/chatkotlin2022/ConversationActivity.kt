@@ -28,19 +28,57 @@ class ConversationActivity : AppCompatActivity(), View.OnClickListener {
         gs = getApplication() as GlobalState?
 
         val bdl: Bundle? = intent.extras
-        val id: String? = bdl?.getString("id")
-        val hash: String? = bdl?.getString("hash")
         val isActive: Boolean?= bdl?.getBoolean("actif")
         if(!isActive!!)
             btnEnvoie?.setEnabled(false)
+        
         val theme: String? = bdl?.getString("theme")
         val title: TextView = findViewById(R.id.conversation_titre)
         title.setText("Conversation : $theme")
+
+        getMessages()
+    }
+
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.conversation_btnOK -> {
+                val bdl: Bundle? = intent.extras
+                val id: String? = bdl?.getString("id")
+                val hash: String? = bdl?.getString("hash")
+                val apiClient = APIClient()
+                val apiService: APIInterface = apiClient.getClient()!!.create(APIInterface::class.java)
+
+                val message = edtSaisie!!.text.toString()
+
+                val call: Call<ListMessages> = apiService.postMessage(hash, id, message)
+                call.enqueue(object : Callback<ListMessages?> {
+                    override fun onResponse(call: Call<ListMessages?>?, response: Response<ListMessages?>) {
+                        val listeMsg: ListMessages? = response.body()
+                        edtSaisie!!.getText().clear()
+                        getMessages()
+
+                    }
+
+                    override fun onFailure(call: Call<ListMessages?>, t: Throwable) {
+                        gs?.alerter("FAILURE")
+                        call.cancel()
+                    }
+                })
+            }
+        }
+    }
+
+    fun getMessages()
+    {
+        val bdl: Bundle? = intent.extras
+        val id: String? = bdl?.getString("id")
+        val hash: String? = bdl?.getString("hash")
+
         val apiClient = APIClient()
         val apiService: APIInterface = apiClient.getClient()!!.create(APIInterface::class.java)
-        val call1: Call<ListMessages> = apiService.doGetListMessage(hash, id)
+        val call: Call<ListMessages> = apiService.doGetListMessage(hash, id)
 
-        call1.enqueue(object : Callback<ListMessages?> {
+        call.enqueue(object : Callback<ListMessages?> {
             override fun onResponse(call: Call<ListMessages?>?, response: Response<ListMessages?>) {
                 val listeMsg: ListMessages? = response.body()
                 val listView : ListView = findViewById(R.id.conversation_svMessages)
@@ -70,31 +108,5 @@ class ConversationActivity : AppCompatActivity(), View.OnClickListener {
                 call.cancel()
             }
         })
-    }
-
-    override fun onClick(view: View?) {
-        when(view?.id) {
-            R.id.conversation_btnOK -> {
-                val bdl: Bundle? = intent.extras
-                val id: String? = bdl?.getString("id")
-                val hash: String? = bdl?.getString("hash")
-                val apiClient = APIClient()
-                val apiService: APIInterface = apiClient.getClient()!!.create(APIInterface::class.java)
-
-                val message = edtSaisie!!.text.toString()
-
-                val call2: Call<ListMessages> = apiService.postMessage(hash, id, message)
-                call2.enqueue(object : Callback<ListMessages?> {
-                    override fun onResponse(call: Call<ListMessages?>?, response: Response<ListMessages?>) {
-                        val listeMsg: ListMessages? = response.body()
-                        edtSaisie!!.getText().clear()
-                    }
-
-                    override fun onFailure(call: Call<ListMessages?>, t: Throwable) {
-                        gs?.alerter("FAILURE")
-                    }
-                })
-            }
-        }
     }
 }
