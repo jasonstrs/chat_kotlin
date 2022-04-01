@@ -31,27 +31,6 @@
         android:enabled="true"
         android:text="@android:string/ok" />
 
-
-    <!--
-    <ScrollView
-    android:id="@+id/conversation_svMessages"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@+id/conversation_btnOK"
-    android:layout_alignLeft="@+id/conversation_titre"
-    android:layout_alignParentRight="true"
-    android:layout_below="@+id/conversation_titre"
-    android:background="@color/blanc" >
-
-    <LinearLayout
-    android:id="@+id/conversation_svLayoutMessages"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    </LinearLayout>
-    </ScrollView>-->
-
     <ListView
         android:id="@+id/conversation_svMessages"
         android:layout_width="wrap_content"
