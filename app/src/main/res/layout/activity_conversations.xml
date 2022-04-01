@@ -76,6 +76,6 @@
         android:text="@string/conversation"
         android:textAlignment="gravity"
         android:textColor="@color/white"
-        android:textSize="20pt" />
+        android:textSize="34sp" />
 
 </RelativeLayout>

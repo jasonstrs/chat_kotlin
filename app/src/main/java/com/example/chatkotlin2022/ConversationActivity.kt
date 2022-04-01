@@ -26,6 +26,9 @@ class ConversationActivity : AppCompatActivity() {
 
         val id: String? = bdl?.getString("id")
         val hash: String? = bdl?.getString("hash")
+        val theme: String? = bdl?.getString("theme")
+        val title: TextView = findViewById(R.id.conversation_titre)
+        title.setText("Conversation : $theme")
         val apiClient = APIClient()
         val apiService: APIInterface = apiClient.getClient()!!.create(APIInterface::class.java)
         val call1: Call<ListMessages> = apiService.doGetListMessage(hash, id)
