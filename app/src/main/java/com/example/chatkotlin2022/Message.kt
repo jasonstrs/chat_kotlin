@@ -12,7 +12,6 @@ class Message {
         this.auteur = auteur
     }
 
-
     override fun toString(): String {
         return "$auteur : \n$contenu"
     }

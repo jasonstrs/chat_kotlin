@@ -10,6 +10,10 @@ class ListMessages {
         return messages
     }
 
+    fun getColorWith(position: Int) : String? {
+        return messages.get(position).couleur
+    }
+
     override fun toString(): String {
         return "ListMessages(version=$version, success=$success, status=$status, messages=$messages)"
     }
