@@ -8,4 +8,5 @@
     <string name="conversation">Conversation</string>
     <string name="auteur">Auteur</string>
     <string name="message">Message</string>
+    <string name="theme">Thème</string>
 </resources>

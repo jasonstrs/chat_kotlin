@@ -53,10 +53,8 @@ class ConversationActivity : AppCompatActivity(), View.OnClickListener {
                 val call: Call<ListMessages> = apiService.postMessage(hash, id, message)
                 call.enqueue(object : Callback<ListMessages?> {
                     override fun onResponse(call: Call<ListMessages?>?, response: Response<ListMessages?>) {
-                        val listeMsg: ListMessages? = response.body()
                         edtSaisie!!.getText().clear()
                         getMessages()
-
                     }
 
                     override fun onFailure(call: Call<ListMessages?>, t: Throwable) {
@@ -101,6 +99,7 @@ class ConversationActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
                 listView.adapter = adapter
+                listView.setSelection(adapter.count - 1);
             }
 
             override fun onFailure(call: Call<ListMessages?>, t: Throwable) {

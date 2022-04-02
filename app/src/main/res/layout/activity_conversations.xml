@@ -52,7 +52,7 @@
         android:layout_alignRight="@+id/conversation_btnOK"
         android:layout_alignParentTop="true"
         android:gravity="center|center_horizontal"
-        android:text="@string/conversation"
+        android:text="@string/theme"
         android:textAlignment="gravity"
         android:textColor="@color/white"
         android:textSize="34sp" />
