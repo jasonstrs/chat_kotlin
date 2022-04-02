@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ChoixConversationActivity : AppCompatActivity(), View.OnClickListener {
+class ChoixConversationActivity : BaseActivity(), View.OnClickListener {
     var gs: GlobalState? = null
     var spinConversations: Spinner? = null
     var btnChoixConv: Button? = null

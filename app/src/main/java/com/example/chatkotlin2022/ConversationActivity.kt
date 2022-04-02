@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ConversationActivity : AppCompatActivity(), View.OnClickListener {
+class ConversationActivity : BaseActivity(), View.OnClickListener {
     var edtSaisie: EditText? = null
     var btnEnvoie: Button? = null
     var gs: GlobalState? = null

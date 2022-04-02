@@ -18,7 +18,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : BaseActivity(), View.OnClickListener {
     var edtLogin: EditText? = null
     var edtPasse: EditText? = null
     var btnLogin: Button? = null
@@ -57,26 +57,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             edtPasse?.setText("");
             cbRemember?.isChecked = false;
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true;
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var id = item.itemId
-        when (id) {
-            R.id.action_settings -> {
-                gs?.alerter("Préférences")
-                // Changer d'activité pour afficher SettingsActivity
-                // Changer d'activité pour afficher SettingsActivity
-                val toSettings = Intent(this, SettingsActivity::class.java)
-                startActivity(toSettings)
-            }
-            R.id.action_account -> gs?.alerter("Compte")
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(view: View?) {
